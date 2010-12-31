@@ -25,7 +25,7 @@ Release:	%{rel}
 License:	BSD/GPL v2
 Group:		X11/Applications
 Source0:	%{name}.tar.bz2
-# Source0-md5:	0cc73e6033025c8ba8c5ef0090a631b1
+# Source0-md5:	89171c4f95f298340bf1dbf5a487b787
 URL:		http://giagio.com/wiki/moin.cgi/iPhoneEthernetDriver
 BuildRequires:	libimobiledevice-devel
 Requires:	udev-core
