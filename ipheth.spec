@@ -20,12 +20,12 @@
 %define		pname	ipheth
 Summary:	iPhone USB Ethernet Driver
 Name:       %{pname}%{_alt_kernel}
-Version:	0.1
+Version:	1.0
 Release:	%{rel}
 License:	BSD/GPL v2
 Group:		X11/Applications
-Source0:	%{name}.tar.bz2
-# Source0-md5:	89171c4f95f298340bf1dbf5a487b787
+Source0:	https://launchpad.net/ubuntu/+archive/primary/+files/%{name}_%{version}.orig.tar.gz
+# Source0-md5:	80548f0d419ff0c2784d148b40b2aeb6
 URL:		http://giagio.com/wiki/moin.cgi/iPhoneEthernetDriver
 BuildRequires:	libimobiledevice-devel
 Requires:	udev-core
@@ -50,7 +50,7 @@ Requires(postun):	%releq_kernel
 Linux driver for iPhone USB Ethernet Driver.
 
 %prep
-%setup -q -n %{name}
+%setup -q
 
 %build
 %if %{with kernel}
