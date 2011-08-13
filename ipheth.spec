@@ -16,7 +16,7 @@
 %define		_enable_debug_packages	0
 %endif
 
-%define		rel	1
+%define		rel	2
 %define		pname	ipheth
 Summary:	iPhone USB Ethernet Driver
 Name:		%{pname}%{_alt_kernel}
@@ -29,6 +29,7 @@ Source0:	https://github.com/downloads/dgiagio/ipheth/ipheth-%{version}.tar.gz
 URL:		http://giagio.com/wiki/moin.cgi/iPhoneEthernetDriver
 BuildRequires:	libimobiledevice-devel
 Requires:	udev-core
+Requires:	usbmuxd
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
