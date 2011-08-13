@@ -19,12 +19,12 @@
 %define		rel	1
 %define		pname	ipheth
 Summary:	iPhone USB Ethernet Driver
-Name:       %{pname}%{_alt_kernel}
+Name:		%{pname}%{_alt_kernel}
 Version:	1.0
 Release:	%{rel}
 License:	BSD/GPL v2
 Group:		X11/Applications
-Source0:	https://launchpad.net/ubuntu/+archive/primary/+files/%{name}_%{version}.orig.tar.gz
+Source0:	https://github.com/downloads/dgiagio/ipheth/ipheth-%{version}.tar.gz
 # Source0-md5:	80548f0d419ff0c2784d148b40b2aeb6
 URL:		http://giagio.com/wiki/moin.cgi/iPhoneEthernetDriver
 BuildRequires:	libimobiledevice-devel
@@ -71,7 +71,7 @@ rm -rf $RPM_BUILD_ROOT
 %if %{with userspace}
 install -d $RPM_BUILD_ROOT{/lib/udev,/etc/udev/rules.d}
 install -p ipheth-pair/ipheth-pair $RPM_BUILD_ROOT/lib/udev
-cp -a ipheth-pair/90-iphone-tether.rules $RPM_BUILD_ROOT/etc/udev/rules.d
+cp -p ipheth-pair/90-iphone-tether.rules $RPM_BUILD_ROOT/etc/udev/rules.d
 %endif
 
 %clean
