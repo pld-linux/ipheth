@@ -66,7 +66,10 @@ Linux driver for iPhone USB Ethernet Driver.
 %install
 rm -rf $RPM_BUILD_ROOT
 %if %{with kernel}
-%install_kernel_modules -m ipheth-driver/ipheth -d misc
+%install_kernel_modules -m ipheth-driver/ipheth -d misc -s update -n %{pname}
+cat <<'EOF' >> /etc/modprobe.d/%{_kernel_ver}/%{pname}.conf
+blacklist %{pname}
+EOF
 %endif
 
 %if %{with userspace}
@@ -92,5 +95,6 @@ rm -rf $RPM_BUILD_ROOT
 %if %{with kernel}
 %files -n kernel%{_alt_kernel}-net-ipheth
 %defattr(644,root,root,755)
+/etc/modprobe.d/%{_kernel_ver}/%{pname}.conf
 /lib/modules/%{_kernel_ver}/misc/*.ko*
 %endif
