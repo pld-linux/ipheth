@@ -16,7 +16,7 @@
 %define		_enable_debug_packages	0
 %endif
 
-%define		rel	2
+%define		rel	3
 %define		pname	ipheth
 Summary:	iPhone USB Ethernet Driver
 Name:		%{pname}%{_alt_kernel}
@@ -67,15 +67,15 @@ Linux driver for iPhone USB Ethernet Driver.
 rm -rf $RPM_BUILD_ROOT
 %if %{with kernel}
 %install_kernel_modules -m ipheth-driver/ipheth -d misc -s update -n %{pname}
-cat <<'EOF' >> /etc/modprobe.d/%{_kernel_ver}/%{pname}.conf
+cat <<'EOF' >> $RPM_BUILD_ROOT/etc/modprobe.d/%{_kernel_ver}/%{pname}.conf
 blacklist %{pname}
 EOF
 %endif
 
 %if %{with userspace}
-install -d $RPM_BUILD_ROOT{/lib/udev,/etc/udev/rules.d}
+install -d $RPM_BUILD_ROOT{/lib/udev/rules.d}
 install -p ipheth-pair/ipheth-pair $RPM_BUILD_ROOT/lib/udev
-cp -p ipheth-pair/90-iphone-tether.rules $RPM_BUILD_ROOT/etc/udev/rules.d
+cp -p ipheth-pair/90-iphone-tether.rules $RPM_BUILD_ROOT/lib/udev/rules.d
 %endif
 
 %clean
@@ -89,7 +89,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%config(noreplace) %verify(not md5 mtime size) /etc/udev/rules.d/90-iphone-tether.rules
+/lib/udev/rules.d/90-iphone-tether.rules
 %attr(755,root,root) /lib/udev/ipheth-pair
 
 %if %{with kernel}
