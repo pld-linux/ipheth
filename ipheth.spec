@@ -16,7 +16,7 @@
 %define		_enable_debug_packages	0
 %endif
 
-%define		rel	3
+%define		rel	4
 %define		pname	ipheth
 Summary:	iPhone USB Ethernet Driver
 Name:		%{pname}%{_alt_kernel}
@@ -73,7 +73,7 @@ EOF
 %endif
 
 %if %{with userspace}
-install -d $RPM_BUILD_ROOT{/lib/udev/rules.d}
+install -d $RPM_BUILD_ROOT/lib/udev/rules.d
 install -p ipheth-pair/ipheth-pair $RPM_BUILD_ROOT/lib/udev
 cp -p ipheth-pair/90-iphone-tether.rules $RPM_BUILD_ROOT/lib/udev/rules.d
 %endif
