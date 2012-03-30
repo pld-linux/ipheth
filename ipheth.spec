@@ -16,7 +16,7 @@
 %define		_enable_debug_packages	0
 %endif
 
-%define		rel	4
+%define		rel	5
 %define		pname	ipheth
 Summary:	iPhone USB Ethernet Driver
 Name:		%{pname}%{_alt_kernel}
